@@ -1,29 +1,34 @@
 #include <iostream>
-#include<math.h>
+#include <math.h>
 using namespace std;
 
-int main() {
-  int n;
-  cout << "Nhap vào so nguyên duong n: ";
-  cin >> n;
-  bool isPrime = true;
-  if (n <= 1) {
-    isPrime = false;
-  } else {
-    for (int i = 2; i <= sqrt(n); i++) {
-      if (n % i == 0) {
-        isPrime = false;
-        break;
-      }
-    }
-  }
+int Fibonacci(int n);
+int Fibo(int n);
 
-  if (isPrime) {
-    cout << n << " la so nguyen to." << endl;
-  } else {
-    cout << n << " khong phai la so nguyen to." << endl;
-  }
-
-  return 0;
+int main(){
+	int n;
+	cin>>n;
+	for(int i=0;i<=n;i++){
+	cout<<Fibonacci(i)<<" ";
+	}
+	return 0;
 }
 
+int Fibonacci(int n){
+	if(n<0){return -1;}
+	else if(n==0||n==1){return n;}
+	else return Fibonacci(n-1)+Fibonacci(n-2);
+}
+int Fibo(int n){
+	int f0=0;
+	int f1=1;
+	int fn=1;
+		if(n<0){return -1;}
+	else if(n==0||n==1){return n;}
+	else for(int i=2;i<=n;i++){	
+		fn=f0+f1;
+		f0=f1;
+		f1=fn;
+	}
+	return fn;
+}
