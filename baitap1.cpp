@@ -1,59 +1,61 @@
 #include <iostream>
-#include <string>
 #include <math.h>
+
 using namespace std;
-float giaiPTBac1(float a, float b, float c) {
-  if (a == 0) {
-    if (b == 0) {
-      return 0;
-    } else {
-      return -c / b;
-    }
-  } else {
-    return -c / a;
-  }
-}
-float giaiPTBac2(float a, float b, float c) {
-  float delta = b * b - 4 * a * c;
-  if (delta < 0) {
-    return 0;
-  } else if (delta == 0) {
-    return -b / 2 * a;
-  } else {
-    return (-b + sqrt(delta)) / 2 * a;
-  }
-}
-void maxvalue(int a[]){
-	int max=a[0];
-	for(int i=0;i<=3;i++){
-		if(a[i]>max){
-			max=a[i];
-		}
-	}
-	cout<<" max equal = "<<max;
-}
-void hoanvi(int a[]){
-	int tmp=a[0];
-	a[0]=a[1]
-	a[1]=tmp;
-	cout<<" sau hoan vi "<<a[0]<<" "<<a[1];
-}
-void sort4songuyen(int a[]) {
-  for (int i = 0; i < 3; i++) {
-    for (int j = i + 1; j < 4; j++) {
-      if (a[i] > a[j]) {
-        int temp = a[i];
-        a[i] = a[j];
-        a[j] = temp;
-      }
-    }
-  }
-}
+
+void Input(int a[][10], int n);
+void Output(int a[][10], int n);
+void DuongCheoChinh( int a[][10], int n);
+void DuongCheoPhu( int a[][10], int n);
+
 
 int main(){
-	
-
-
-	
+	int n;
+	cin>>n;
+	int a[n][10];
+	Input(a,n);
+	Output(a,n);
+	cout<<endl<<endl;
+	DuongCheoChinh(a,n);
+	cout<<endl<<endl;
+	DuongCheoPhu(a,n);
 	return 0;
 }
+
+void Input(int a[][10], int n){
+	for(int i=0;i<n;i++){
+		for(int j=0;j<n;j++){
+			cout<<"Nhap phan tu thu"<<"["<<i<<";"<<j<<"] : ";
+			cin>>a[i][j];
+		}
+	}
+} 
+void Output(int a[][10], int n){
+	cout<<"Ma tran la"<<endl;
+	for(int i=0;i<n;i++){
+		cout<<endl;
+		for(int j=0;j<n;j++){
+			cout<<a[i][j]<<" ";
+		}
+	}
+}
+
+void DuongCheoChinh( int a[][10], int n){
+	cout<<"Ma tran co duong cheo chinh la: ";
+	for(int i=0;i<n;i++){
+		for(int j=0;j<n;j++){
+			if(i==j){
+			cout<<a[i][j]<<" ";}
+		}
+	}
+}
+void DuongCheoPhu( int a[][10], int n){
+	cout<<"Ma tran co duong cheo phu la: ";
+	for(int i=0;i<n;i++){
+		for(int j=0;j<n;j++){
+			if(i+j==(n-1)){
+			cout<<a[i][j]<<" ";}
+		}
+	}
+}
+
